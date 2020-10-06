@@ -9,8 +9,10 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 ------------------------------------------------------------------------------------------------ */
 
 const raisedToTheThird = (arr) => {
-  // Solution code here...
-}
+  let ret = [];
+  arr.forEach(num => ret.push(Math.pow(num, 3)));
+  return ret;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -20,7 +22,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-  // Solution code here...
+  return str + ' The end.';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +39,7 @@ console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-  // Solution code here...
+  arr.push(arr[0]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-  // Solution code here...
+  obj['yearBorn'] = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,7 +75,9 @@ console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-  // Solution code here...
+  let keys = Object.keys(people);
+
+  keys.forEach(person => people[person]['isAuthor'] = true);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +96,10 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-  // Solution code here...
+  arr2.forEach(val => {
+    arr1.push(arr1[arr1.length]);
+    arr1[arr1.length - 1] = val;
+  });
 
 };
 
@@ -141,7 +148,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should add a property to every object in an array', () => {
     const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
     setStatusAsAuthor(a);
@@ -152,7 +159,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should append the second array to the first', () => {
     const a = [1, 2, 3, 4];
     const b = [5, 6, 7, 8];
