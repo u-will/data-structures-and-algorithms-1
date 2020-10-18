@@ -7,7 +7,25 @@ Build a simple express server. Connect a '/hello' route that sends a greeting of
 ------------------------------------------------------------------------------------------------ */
 
 const createServer = () => {
-  // Solution code here...
+  const express = require('express');
+  const app = express();
+
+  app.get('/hello', (req, res) => {
+    res.status(200).send('Ahoy!');
+  });
+
+  app.get('/aboutme', (req, res) => {
+    res.status(200).send('Hi, I am Mark Bell, and this is a tiny bio about me. It\'s so small that it only contains my name!');
+  });
+
+  app.get('/favoritefoods', (req, res) => {
+    res.status(200).send(['pizza', 'indian', 'sushi', 'thai']);
+  });
+
+  app.get('*', (req, res) => {
+    // shouldn't this be a res.error(404).send('foo') ?
+    res.status(404).send('Page not found, doh!');
+  });
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -27,7 +45,9 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  return input.reduce((acc, val) => {
+    return acc + val.filter(num => num === target).length;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -41,7 +61,9 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  return input.reduce((acc, val) => {
+    return acc + val.reduce((acc, val) => acc + val, 0);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -57,7 +79,14 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  return input.reduce((acc, arr) => { // go through the first arr layer
+    return acc.concat([arr.reduce((acc, val) => { // now through internal arrays
+      if (typeof (val) === 'number' && !(val % 5)) // check if we are a number divisible by 5
+        return acc.concat(Math.pow(2, val)); // raise 2 to that val
+      else
+        return acc; // return what we have so far
+    }, [])]);
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,7 +152,15 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  return data.reduce((acc, person, idx) => {
+    if (person.gender === 'male' || person.gender === 'female') {
+      if (idx) // we are passed the first one
+        return acc.concat(' and ' + person.name);
+      else
+        return person.name;
+    } else
+      return acc;
+  }, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +170,13 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  return data.reduce((incumbent, challenger) => {
+    // console.log(incumbent.name, incumbent.height, 'VS', challenger.name, challenger.height);
+    if (parseInt(incumbent.height) < parseInt(challenger.height))
+      return incumbent;
+    else
+      return challenger;
+  }, {}).name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -220,14 +263,14 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return only characters that are male or female', () => {
     expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
     expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the name of the shortest character', () => {
     expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
   });
