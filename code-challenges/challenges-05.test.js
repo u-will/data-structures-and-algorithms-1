@@ -39,7 +39,7 @@ let $ = createSnippetWithJQuery(`
 const templateWithJQuery = () => {
   starWarsPeople.forEach(person => {
 
-    let $template = $(`<section>'${$('#template').html()}</section>`);
+    let $template = $(`<section>${$('#template').html()}</section>`);
     $('main').append($template);
 
     $template.removeAttr('id');
