@@ -1,5 +1,7 @@
 # Data Structures and Algorithms
 
+## [401 Python Challenges](python/README.md)
+
 ## Create a copy of this repository
 
 1. Create a new repository in your GitHub account called `data-structures-and-algorithms`
