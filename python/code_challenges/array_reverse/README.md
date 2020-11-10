@@ -1,25 +1,22 @@
-# Reverse an Array
-
-## Challenge
+# Challenge 01 - Reverse an Array
 
 Write a function called reverseArray which takes an array as an argument. Without utilizing any of the built-in methods available to your language, return an array with elements in reversed order.
 
 ## Approach and Efficiency
 
-method 1:
+### method 1
 
 * O(2n) space
 * O(n) time
 * immutable
 * steps:
-
   1. create a new empty array.
   1. In a while loop, while the original array has length
      * pop the last value off the original array
      * append that value to the new array
   1. return the new array after the while loop is terminated
 
-method 2:
+### method 2
 
 * O(n) space
 * 0(n) time
@@ -31,6 +28,6 @@ method 2:
 
 ## Whiteboard solution
 
-![whiteboard](reverse_array.png)
+![whiteboard](array_reverse.png)
 
-[<-- Python Challenges](../../README.md)
+[<-- Python Challenges](../README.md)

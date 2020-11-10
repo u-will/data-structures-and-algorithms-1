@@ -1,13 +1,13 @@
 def reverse_array(arr):
     # initial left and right index assignment
-    l = 0
-    r = len(arr)-1
+    left = 0
+    right = len(arr)-1
 
     # loop through the array and swap items
-    while(l<r):
-        arr[l], arr[r] = arr[r], arr[l]
-        l += 1
-        r -= 1
+    while(left < right):
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
 
     # return the reversed arraybw
     return arr
