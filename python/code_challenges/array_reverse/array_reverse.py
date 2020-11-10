@@ -1,4 +1,4 @@
-def reverse_array(arr):
+def reverseArray(arr):
     # initial left and right index assignment
     left = 0
     right = len(arr)-1
@@ -11,13 +11,3 @@ def reverse_array(arr):
 
     # return the reversed arraybw
     return arr
-
-
-assert reverse_array([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1], "Fail"
-
-assert reverse_array([7, 13, -19]) == [-19, 13, 7], "Fail"
-
-
-print('*' * 80)
-print('All tests passed')
-print('*' * 80)
