@@ -1,27 +1,30 @@
 # Challenge 04 - Linked List
 
-[Pull request]()
+[Pull request](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
 
 ## Problem domain:
 
-Write a function called BinarySearch which takes in 2 parameters: a sorted array and the search key. Without utilizing any of the built-in methods available to your language, return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
+Implement a Linked List
 
-## Approach and Efficiency
+It should be able to insert a node at the head using O(1) time and space
+It should be able to determine if a value is stored in the list
+It should be able to represent all the data being stored in the node of the list
 
-### method 1
+## Implementation
 
-* O(n) space
-* O(log(n)) time
-* mutable
-* steps:
-  1. left index, right index, and middle index variables
-  2. if the value we are searching for is less than the left or more than the right, return -1
-  3. if the value IS the left, middle, or right, return that index
-     * if value is less than the mid, recursively call with mid set as the right
-     * if value is greater than the mid, recursively call with mid set as the left
+`LinkedList`
 
-## Whiteboard solution
+* `__str__` - will use a fstring to print out each ndoe
+* `insert(value)` - will create a new node, insert it at the beginning of the list and set the value
+* `includes(value)` - will traverse the list forwards and return a boolean `True` when the value is encountered, or `False` if never found
 
-![whiteboard](binary_search.png)
+DoubleLinkedList
+
+* inherits `LinkedList`
+* `append(value)` - similar to `insert()`, but puts the node at the end of the list
+
+## Future implementations:
+
+* some method to remove a node
 
 [<-- Python Challenges](../README.md)
