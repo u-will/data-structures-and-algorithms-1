@@ -11,11 +11,9 @@ def test_import():
 
 def test_empty_list():
     linked_list = LinkedList()
+    assert linked_list
     assert isinstance(linked_list, LinkedList)
-    # test the head
-    actual = linked_list.head
-    expect = None
-    assert actual == expect
+    assert linked_list.head is None
 
 
 def test_first_node():
@@ -111,3 +109,72 @@ def test_str_dlist():
     dlist.append('4')
     print(str(dlist))
     assert str(dlist) == 'NULL <-> { 3 } <-> { 1 } <-> { 2 } <-> { 4 } <-> NULL'
+
+
+#########################
+# Extending linked list #
+#########################
+
+# test append()
+def test_append_empty():
+    ll = LinkedList()
+    ll.append('test')
+    assert str(ll.head) == "test"
+
+
+def test_append_several():
+    ll = LinkedList()
+    ll.append(1)
+    ll.append(2)
+    ll.append(3)
+    assert ll.includes(3)
+    assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
+
+
+# test insert_before
+def test_insert_before_empty():
+    ll = LinkedList()
+    with pytest.raises(Exception) as context:
+        ll.insert_before(3, 5)
+    assert str(context.value) == "Cannot `insert_before` on empty LinkedList"
+
+
+def test_insert_before_reference_does_not_exist():
+    ll = LinkedList()
+    with pytest.raises(Exception) as context:
+        ll.insert(1)
+        ll.insert_before(3, 5)
+    assert str(context.value) == 'No node containing: 5'
+
+
+def test_insert_before_exists():
+    ll = LinkedList()
+    ll.insert(3)
+    ll.insert(1)
+    ll.insert_before(2, 3)
+    assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
+
+
+# test insert_after
+def test_insert_after_empty():
+    ll = LinkedList()
+    with pytest.raises(Exception) as context:
+        ll.insert_after(1, 1)
+    assert str(context.value) == "Cannot `insert_after` on empty LinkedList"
+
+
+def test_insert_after_does_not_exist():
+    ll = LinkedList()
+    ll.insert(1)
+    ll.insert(2)
+    with pytest.raises(Exception) as context:
+        ll.insert_after(3, 3)
+    assert str(context.value) == "No node containing: 3"
+
+
+def test_insert_after_exists():
+    ll = LinkedList()
+    ll.insert(2)
+    ll.insert(1)
+    ll.insert_after(3, 2)
+    assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
