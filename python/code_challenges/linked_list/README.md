@@ -1,6 +1,7 @@
 # Linked List
 
-[Pull request](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
+* [Pull request LL](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
+* [Pull request LL - append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
 
 ## Problem domain:
 
