@@ -17,10 +17,6 @@ class LinkedList:
         output += 'NULL'
         return output
 
-    def insert(self, value):
-        node = Node(value, self.head)
-        self.head = node
-
     def includes(self, value):
         current = self.head
         while current:
@@ -28,6 +24,53 @@ class LinkedList:
                 return True
             current = current.next
         return False
+
+    def insert(self, value):
+        node = Node(value, self.head)
+        self.head = node
+
+    def append(self, value):
+        node = Node(value)
+        current = self.head
+        if not current:
+            self.head = node
+        else:
+            while(current and current.next):
+                current = current.next
+            current.next = node
+        return
+
+    def insert_before(self, new_val, reference_val):
+        if not self.head:
+            raise Exception('Cannot `insert_before` on empty LinkedList')
+
+        if self.head.value == reference_val:
+            self.insert(new_val)
+        else:
+            current = self.head
+            while(current.next):
+                if(current.next.value == reference_val):
+                    node = Node(new_val, current.next)
+                    current.next = node
+                    return
+            raise Exception(f'No node containing: {reference_val}')
+
+    def insert_after(self, new_val, reference_val):
+        if not self.head:
+            raise Exception('Cannot `insert_after` on empty LinkedList')
+
+        current = self.head
+        while current:
+            if current.value == reference_val:
+                if current.next:
+                    node = Node(new_val, current.next.next)
+                else:
+                    node = Node(new_val)
+                current.next = node
+                return
+            else:
+                current = current.next
+        raise Exception(f'No node containing: {reference_val}')
 
 
 class Node:
