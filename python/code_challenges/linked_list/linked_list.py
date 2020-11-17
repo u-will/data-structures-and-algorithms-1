@@ -71,6 +71,25 @@ class LinkedList:
             current = current.next
         raise Exception(f'No node containing: {reference_val}')
 
+    def kth_from_end(self, k):
+        leader = follower = self.head
+
+        if k < 0 or not leader:
+            raise Exception(f'Invalid index: {k} is out of range on linked list')
+
+        rope = k
+
+        while leader.next:
+            leader = leader.next
+            if rope:
+                rope -= 1
+            else:
+                follower = follower.next
+
+        if rope:
+            raise Exception(f'Invalid index: {k} is out of range on linked list')
+        return follower.value
+
 
 class Node:
     """
