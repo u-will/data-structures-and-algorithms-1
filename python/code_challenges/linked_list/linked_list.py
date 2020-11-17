@@ -9,10 +9,8 @@ class LinkedList:
         self.head = None
 
         if(initial_list):
-            i = len(initial_list) - 1
-            while i:
-                self.insert(initial_list[i])
-                i -= 1
+            for value in initial_list[::-1]:
+                self.insert(value)
 
     def __str__(self):
         output = ""
@@ -32,8 +30,7 @@ class LinkedList:
         return False
 
     def insert(self, value):
-        node = Node(value, self.head)
-        self.head = node
+        self.head = Node(value, self.head)
 
     def append(self, value):
         node = Node(value)
@@ -52,14 +49,15 @@ class LinkedList:
 
         if self.head.value == reference_val:
             self.insert(new_val)
-        else:
-            current = self.head
-            while(current.next):
-                if(current.next.value == reference_val):
-                    node = Node(new_val, current.next)
-                    current.next = node
-                    return
-            raise Exception(f'No node containing: {reference_val}')
+            return
+
+        current = self.head
+        while(current.next):
+            if(current.next.value == reference_val):
+                current.next = Node(new_val, current.next)
+                return
+            current = current.next
+        raise Exception(f'No node containing: {reference_val}')
 
     def insert_after(self, new_val, reference_val):
         if not self.head:
@@ -68,14 +66,9 @@ class LinkedList:
         current = self.head
         while current:
             if current.value == reference_val:
-                if current.next:
-                    node = Node(new_val, current.next.next)
-                else:
-                    node = Node(new_val)
-                current.next = node
+                current.next = Node(new_val, current.next)
                 return
-            else:
-                current = current.next
+            current = current.next
         raise Exception(f'No node containing: {reference_val}')
 
 
