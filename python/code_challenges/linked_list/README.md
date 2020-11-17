@@ -2,7 +2,7 @@
 
 * [Pull request LL](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
 * [Challenge 06 |  append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
-* [Challenge 07 | kth_from_end](https://github.com/skrambelled/data-structures-and-algorithms/pull/24)
+* [Challenge 07 | kth_from_end](https://github.com/skrambelled/data-structures-and-algorithms/pull/25)
 
 ## Problem domain:
 
