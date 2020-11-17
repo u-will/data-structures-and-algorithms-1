@@ -1,7 +1,8 @@
 # Linked List
 
 * [Pull request LL](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
-* [Pull request LL - append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
+* [Challenge 06 |  append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
+* [Challenge 07 | kth_from_end](https://github.com/skrambelled/data-structures-and-algorithms/pull/25)
 
 ## Problem domain:
 
@@ -18,6 +19,8 @@ Implement a Linked List
 ## Approach and Efficiency
 
 ![whiteboard of insert](LL_insert_before_after.png)
+
+![whiteboard of kth_from_end](LL_nth_valye.png)
 
 ## Implementation
 

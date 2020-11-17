@@ -134,6 +134,7 @@ def test_append_several():
     assert ll.includes(3)
     assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
 
+
 ########################################################################
 # test insert_before
 def test_insert_before_empty():
@@ -185,3 +186,44 @@ def test_insert_after_exists():
 
 
 #####################################################################
+
+
+# Where k is greater than the length of the linked list
+def test_k_is_greater_than_list_length():
+    ll = LinkedList()
+    val = 1
+    with pytest.raises(Exception) as context:
+        ll.kth_from_end(val)
+    assert str(context.value) == f'Invalid index: {val} is out of range on linked list'
+
+
+# Where k and the length of the list are the same
+def test_k_is_equal_to_list_length():
+    ll = LinkedList([1, 2, 3])
+    val = 3
+    with pytest.raises(Exception) as context:
+        ll.kth_from_end(val)
+    assert str(context.value) == f'Invalid index: {val} is out of range on linked list'
+
+
+# Where k is not a positive integer
+def test_k_is_negative():
+    ll = LinkedList()
+    val = -1
+    with pytest.raises(Exception) as context:
+        ll.kth_from_end(val)
+    assert str(context.value) == f'Invalid index: {val} is out of range on linked list'
+
+
+# Where the linked list is of a size 1
+def test_ll_is_size_one():
+    ll = LinkedList([100])
+    assert ll.kth_from_end(0) == 100
+
+
+# “Happy Path” where k is not at the end, but somewhere in the middle of the li
+def test_kth_is_in_ll_somewhere():
+    ll = LinkedList([1, 2, 3, 4])
+    assert ll.kth_from_end(0) == 4
+    assert ll.kth_from_end(1) == 3
+    assert ll.kth_from_end(3) == 1
