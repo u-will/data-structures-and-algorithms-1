@@ -134,6 +134,7 @@ def test_append_several():
     assert ll.includes(3)
     assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
 
+
 ########################################################################
 # test insert_before
 def test_insert_before_empty():
