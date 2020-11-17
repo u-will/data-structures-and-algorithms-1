@@ -33,27 +33,29 @@ def test_fixture_node_in_linked_list(one_list):
 
 
 def test_insert_node():
-    linked_list = LinkedList(Node("first"))
-    assert linked_list.head.value == "first"
-    linked_list.insert("second")
-    assert linked_list.head.value == "second"
+    ll = LinkedList()
+    ll.insert('first')
+    assert ll.head.value == "first"
+    ll.insert("second")
+    assert ll.head.value == "second"
 
 
 def test_includes():
-    linked_list = LinkedList(Node("first"))
-    assert linked_list.includes("second") is False
-    assert linked_list.includes("first") is True
-    linked_list.insert("another")
-    assert linked_list.includes("another") is True
+    ll = LinkedList()
+    ll.insert('first')
+    assert ll.includes("second") is False
+    assert ll.includes("first") is True
+    ll.insert("another")
+    assert ll.includes("another") is True
 
 
 def test_to_string(empty_list):
-    linked_list = LinkedList()
-    assert str(linked_list) == "NULL"
-    linked_list.insert('3')
-    linked_list.insert(2)
-    linked_list.insert('1')
-    assert str(linked_list) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
+    ll = LinkedList()
+    assert str(ll) == "NULL"
+    ll.insert('3')
+    ll.insert(2)
+    ll.insert('1')
+    assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
 
 
 @pytest.fixture
@@ -63,12 +65,14 @@ def empty_list():
 
 @pytest.fixture
 def one_list():
-    return LinkedList(Node("one"))
+    ll = LinkedList()
+    ll.insert('one')
+    return ll
 
 
 @pytest.fixture
 def two_list():
-    some_list = LinkedList(Node("one"))
+    some_list = LinkedList(["one"])
     some_list.insert("two")
     return some_list
 
@@ -130,7 +134,7 @@ def test_append_several():
     assert ll.includes(3)
     assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
 
-
+########################################################################
 # test insert_before
 def test_insert_before_empty():
     ll = LinkedList()
@@ -178,3 +182,6 @@ def test_insert_after_exists():
     ll.insert(1)
     ll.insert_after(3, 2)
     assert str(ll) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
+
+
+#####################################################################

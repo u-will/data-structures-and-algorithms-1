@@ -5,8 +5,12 @@ class LinkedList:
     each node will point to the next
     """
 
-    def __init__(self, head=None):
-        self.head = head
+    def __init__(self, initial_list=None):
+        self.head = None
+
+        if(initial_list):
+            for value in initial_list[::-1]:
+                self.insert(value)
 
     def __str__(self):
         output = ""
@@ -26,19 +30,18 @@ class LinkedList:
         return False
 
     def insert(self, value):
-        node = Node(value, self.head)
-        self.head = node
+        self.head = Node(value, self.head)
 
     def append(self, value):
         node = Node(value)
         current = self.head
         if not current:
             self.head = node
-        else:
-            while(current and current.next):
-                current = current.next
-            current.next = node
-        return
+            return
+
+        while(current.next):
+            current = current.next
+        current.next = node
 
     def insert_before(self, new_val, reference_val):
         if not self.head:
@@ -46,14 +49,15 @@ class LinkedList:
 
         if self.head.value == reference_val:
             self.insert(new_val)
-        else:
-            current = self.head
-            while(current.next):
-                if(current.next.value == reference_val):
-                    node = Node(new_val, current.next)
-                    current.next = node
-                    return
-            raise Exception(f'No node containing: {reference_val}')
+            return
+
+        current = self.head
+        while(current.next):
+            if(current.next.value == reference_val):
+                current.next = Node(new_val, current.next)
+                return
+            current = current.next
+        raise Exception(f'No node containing: {reference_val}')
 
     def insert_after(self, new_val, reference_val):
         if not self.head:
@@ -62,14 +66,9 @@ class LinkedList:
         current = self.head
         while current:
             if current.value == reference_val:
-                if current.next:
-                    node = Node(new_val, current.next.next)
-                else:
-                    node = Node(new_val)
-                current.next = node
+                current.next = Node(new_val, current.next)
                 return
-            else:
-                current = current.next
+            current = current.next
         raise Exception(f'No node containing: {reference_val}')
 
 
@@ -80,9 +79,9 @@ class Node:
     next points to the next node
     """
 
-    def __init__(self, value=None, next=None):
+    def __init__(self, value=None, next_=None):
         self.value = value
-        self.next = next
+        self.next = next_
 
     def __str__(self):
         return f'{ self.value }'
