@@ -5,8 +5,14 @@ class LinkedList:
     each node will point to the next
     """
 
-    def __init__(self, head=None):
-        self.head = head
+    def __init__(self, initial_list=None):
+        self.head = None
+
+        if(initial_list):
+            i = len(initial_list) - 1
+            while i:
+                self.insert(initial_list[i])
+                i -= 1
 
     def __str__(self):
         output = ""
@@ -34,11 +40,11 @@ class LinkedList:
         current = self.head
         if not current:
             self.head = node
-        else:
-            while(current and current.next):
-                current = current.next
-            current.next = node
-        return
+            return
+
+        while(current.next):
+            current = current.next
+        current.next = node
 
     def insert_before(self, new_val, reference_val):
         if not self.head:
@@ -80,9 +86,9 @@ class Node:
     next points to the next node
     """
 
-    def __init__(self, value=None, next=None):
+    def __init__(self, value=None, next_=None):
         self.value = value
-        self.next = next
+        self.next = next_
 
     def __str__(self):
         return f'{ self.value }'
