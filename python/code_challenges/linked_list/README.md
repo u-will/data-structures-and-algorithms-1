@@ -1,8 +1,11 @@
 # Linked List
 
-* [Pull request LL](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
-* [Challenge 06 |  append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
+## Pull requests
+
+* [Challenge 05 | linked list](https://github.com/skrambelled/data-structures-and-algorithms/pull/21)
+* [Challenge 06 | append, insert_before, insert_after](https://github.com/skrambelled/data-structures-and-algorithms/pull/22)
 * [Challenge 07 | kth_from_end](https://github.com/skrambelled/data-structures-and-algorithms/pull/25)
+* [Challenge 08 | zip](https://github.com/skrambelled/data-structures-and-algorithms/pull/26)
 
 ## Problem domain:
 
@@ -16,11 +19,19 @@ Implement a Linked List
 * insert a node before a given value
 * insert a node after a given value
 
-## Approach and Efficiency
+## Whiteboards
+
+### insert
 
 ![whiteboard of insert](LL_insert_before_after.png)
 
-![whiteboard of kth_from_end](LL_nth_valye.png)
+### kth_from_end
+
+![whiteboard of kth_from_end](LL_kth_value.png)
+
+### zip
+
+![whiteboard of zip](LL_zip.png)
 
 ## Implementation
 
@@ -32,6 +43,8 @@ Implement a Linked List
 * `append(value)` - append a new node with `value` at the end of the list,
 * `insert_before(new_value, reference_value)` - insert a `new_value` into the linked list before the first occurrence of `reference_value`, otherwise raise an exception
 * `insert_after(new_value, reference_value)` - insert a `new_value` into the linked list after the first occurrence of `reference_value`, otherwise raise an exception
+* `kth_from_end(k)` - return the value that is at the node with a distance of k from the tail
+* `zip` - merge another list into this list, like a zipper on a coat
 
 DoubleLinkedList
 
@@ -39,6 +52,7 @@ DoubleLinkedList
 
 ## Future implementations:
 
-* some method to remove a node
+* method to remove a node
+* method to merge two sorted lists
 
 [<-- Python Challenges](../README.md)

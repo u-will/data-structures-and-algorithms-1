@@ -227,3 +227,49 @@ def test_kth_is_in_ll_somewhere():
     assert ll.kth_from_end(0) == 4
     assert ll.kth_from_end(1) == 3
     assert ll.kth_from_end(3) == 1
+
+
+##############################
+# Linked list zipper testing #
+##############################
+
+def test_zip_lists_of_same_size():
+    ll_primary = LinkedList([1, 2, 3])
+    ll_secondary = LinkedList(['a', 'b', 'c'])
+    ll_primary.zip(ll_secondary)
+    print(str(ll_primary))
+    assert str(ll_primary) == '{ 1 } -> { a } -> { 2 } -> { b } -> { 3 } -> { c } -> NULL'
+
+
+def test_zip_one_empty_list():
+    ll_primary = LinkedList([1, 2, 3])
+    ll_secondary = LinkedList()
+    ll_primary.zip(ll_secondary)
+    print(str(ll_primary))
+    assert str(ll_primary) == '{ 1 } -> { 2 } -> { 3 } -> NULL'
+
+
+def test_zip_primary_list_longer():
+    ll_primary = LinkedList([1, 2, 3])
+    ll_secondary = LinkedList(['a'])
+    ll_primary.zip(ll_secondary)
+    print(str(ll_primary))
+    assert str(ll_primary) == '{ 1 } -> { a } -> { 2 } -> { 3 } -> NULL'
+
+
+def test_zip_secondary_list_longer():
+    ll_primary = LinkedList([1])
+    ll_secondary = LinkedList(['a', 'b', 'c'])
+    ll_primary.zip(ll_secondary)
+    print(str(ll_primary))
+    assert str(ll_primary) == '{ 1 } -> { a } -> { b } -> { c } -> NULL'
+
+
+def test_zip_long_list():
+    max = 100
+    ll_primary = LinkedList([even for even in range(0, max, 2)])
+    ll_secondary = LinkedList([odd for odd in range(1, max, 2)])
+    ll_primary.zip(ll_secondary)
+    ll_check = LinkedList([x for x in range(0, max)])
+    print(str(ll_primary))
+    assert str(ll_primary) == str(ll_check)
