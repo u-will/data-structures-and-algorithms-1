@@ -90,6 +90,31 @@ class LinkedList:
             raise Exception(f'Invalid index: {k} is out of range on linked list')
         return follower.value
 
+    def zip(self, other_list):
+        current1 = self.head
+        current2 = other_list.head
+        # if either list is empty, we can just stop
+        if not (current1 and current2):
+            return
+
+        next1 = current1.next
+        next2 = current2.next
+        while current1 and current2:
+            current1.next = current2
+            # if our primary list is shorter than our other,
+            # next1 will not exist, so we have to check
+            # (we dont need to check for the secondary list being
+            # short because the while loop above checks for current2)
+            if(next1):
+                current2.next = next1
+            current1 = current2.next
+            current2 = next2
+            # if we've reached the end of either list, we can stop zipping
+            if not (next1 and next2):
+                return
+            next1 = next1.next
+            next2 = next2.next
+
 
 class Node:
     """
